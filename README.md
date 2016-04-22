@@ -44,7 +44,8 @@ The calendar template we use is from https://github.com/dAnjou/flask-calendar, w
 4. Algorithm testing 
     * Go to test_algorithm/
     * run `python train.py`
-        * Use all the data to pre-train the classifiers used in the pipeline, stored in .pkl files.
+        * Use all the data to pre-train the classifiers used in the pipeline, stored in .pkl and .npy files.
+        * You can put your own training data to train different classifiers.
     * run `python test.py`
         * Test and compare the performance of different methods, using leave-one-out strategy and 80/20 train/test split
     * Result
