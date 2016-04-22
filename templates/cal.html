@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <style type="text/css"><!--
+
+    td.past-month {
+        color: #bbb;
+    }
+
+    #cal table {
+        margin: 0 10%;
+        width: 80%;
+        height: 80%;
+    }
+
+    #cal h1 {
+        background-color: #fff;
+        padding: 3px;
+    }
+
+    //--></style>
+{% endblock %}
+
+{% block body %}
+    <h style = "color:#04B4AE; font-family:verdana; font-size:300%; bottom:20px"><center>Free Food Calendar</center></h>
+    <div class="row">
+        <div class="twelve columns centered">
+            <div id="cal">
+                {% for month in cal %}
+                {% set current_month = loop.index %}
+                <div>
+                    <h1>{{ ['January', 'Febuary', 'March', 'April',
+                            'May', 'June', 'July', 'August',
+                            'September', 'October', 'November', 'December'][loop.index0]}} {{ year }}</h1>
+                    <table>
+                        {% for week in month %}
+                        <tr>
+                            {% for date in week %}
+                                {% if date.month == current_month %}
+                                <td class="current-month">
+                                {% else %}
+                                <td class="past-month">
+                                {% endif %}
+                                {{ date.day }}
+                                {% for event in events %}
+                                    {% if date.day == event.day 
+                                          and ['January', 'Febuary', 'March', 'April','May', 'June',
+                                               'July', 'August', 'September', 'October', 'November', 
+                                               'December'][date.month - 1] == event.month %}
+                                    <div><a href = "{{event.url}}">event</a></div>
+                                    {% endif %}
+                                {% endfor %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tail %}
+    {{ super() }}
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#cal').orbit({     
+            animation: 'fade',
+            animationSpeed: 0,
+            timer: false,
+            directionalNav: true,
+            fluid: '4x3'
+        });
+   });
+</script>
+{% endblock %}
