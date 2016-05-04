@@ -45,12 +45,12 @@ The calendar template we use is from https://github.com/dAnjou/flask-calendar, w
     * Go to test_algorithm/
     * run `python train.py`
         * Use all the data to pre-train the classifiers used in the pipeline, stored in .pkl and .npy files.
-        * You can put your own training data to train different classifiers.
     * run `python test.py`
         * Test and compare the performance of different methods, using leave-one-out strategy and 80/20 train/test split
     * Result
         * After running `python test.py` you will get four numbers, which are accuracy, precision, recall and F-measure values.
         * Details are in our final report
+    * Feel free to change the training data and modify the code as you like
 
 ## File structure (major files)
 * Base Project Folder /
